@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap">
+    <title>i love you</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            touch-action: manipulation;
+        }
+        
+        body {
+            background-color: aliceblue;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Dosis', sans-serif;
+            position: relative;
+        }
+        
+        #ui .love {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -225px 0 0 -225px;
+        }
+        
+        #ui .love:last-child .love_word {
+            color: #fff;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px #ea80b0;
+        }
+        
+        #ui .love_word {
+            color: #ea80b0;
+            font-size: 1.2rem;
+            transform: translateY(-100%) rotateZ(-30deg);
+            font-family: "Dosis", sans-serif;
+            text-shadow: 0 0 10px #fff;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+        
+        #ui .love_horizontal {
+            animation: horizontal 10000ms infinite alternate ease-in-out;
+        }
+        
+        #ui .love_vertical {
+            animation: vertical 20000ms infinite linear;
+        }
+        
+        /* Генерация анимационных задержек */
+        #ui .love:nth-child(n) .love_horizontal {
+            animation-delay: calc(var(--i) * -300ms);
+        }
+        
+        #ui .love:nth-child(n) .love_vertical {
+            animation-delay: calc(var(--i) * -300ms);
+        }
+        
+        @keyframes horizontal {
+            from {
+                transform: translateX(0px);
+            }
+            to {
+                transform: translateX(450px);
+            }
+        }
+        
+        @keyframes vertical {
+            0% {
+                transform: translateY(180px);
+            }
+            10% {
+                transform: translateY(45px);
+            }
+            15% {
+                transform: translateY(4.5px);
+            }
+            18% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(4.5px);
+            }
+            22% {
+                transform: translateY(34.61538px);
+            }
+            24% {
+                transform: translateY(64.28571px);
+            }
+            25% {
+                transform: translateY(112.5px);
+            }
+            26% {
+                transform: translateY(64.28571px);
+            }
+            28% {
+                transform: translateY(34.61538px);
+            }
+            30% {
+                transform: translateY(4.5px);
+            }
+            32% {
+                transform: translateY(0px);
+            }
+            35% {
+                transform: translateY(4.5px);
+            }
+            40% {
+                transform: translateY(45px);
+            }
+            50% {
+                transform: translateY(180px);
+            }
+            71% {
+                transform: translateY(428.57143px);
+            }
+            72.5% {
+                transform: translateY(441.17647px);
+            }
+            75% {
+                transform: translateY(450px);
+            }
+            77.5% {
+                transform: translateY(441.17647px);
+            }
+            79% {
+                transform: translateY(428.57143px);
+            }
+            100% {
+                transform: translateY(180px);
+            }
+        }
+        
+        .val {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(234, 128, 176, 0.3);
+            text-align: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffafcc;
+            min-width: 280px;
+            max-width: 90%;
+        }
+        
+        .val p {
+            color: #ff4d94;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .val button {
+            padding: 14px 28px;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-family: 'Dosis', sans-serif;
+            letter-spacing: 1px;
+            min-width: 120px;
+        }
+        
+        #yesBtn {
+            background: linear-gradient(45deg, #ff4d94, #ffafcc);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
+        }
+        
+        #yesBtn:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 10px rgba(255, 77, 148, 0.3);
+        }
+        
+        #noBtn {
+            background: linear-gradient(45deg, #b8b8b8, #e0e0e0);
+            color: #666;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        #noBtn.disabled {
+            background: linear-gradient(45deg, #666, #999);
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.9;
+            transform: scale(1) !important;
+        }
+        
+        #noBtn.disabled::after {
+            content: "АШАЛЕЛ";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff3333, #ff6666);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-5deg); }
+            75% { transform: translateX(-50%) rotate(5deg); }
+        }
+        
+        .gif-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2000;
+            text-align: center;
+        }
+        
+        .gif-container img {
+            max-width: 90vw;
+            max-height: 70vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(255, 77, 148, 0.5);
+            border: 5px solid white;
+        }
+        
+        .gif-title {
+            color: #ff4d94;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            z-index: 999;
+            pointer-events: none;
+        }
+        
+        .click-count {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #ff4d94;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            #ui .love_word {
+                font-size: 1rem;
+            }
+            
+            #ui .love:last-child .love_word {
+                font-size: 1.5rem;
+            }
+            
+            .val {
+                padding: 20px 25px;
+                min-width: 250px;
+            }
+            
+            .val p {
+                font-size: 1.5rem;
+            }
+            
+            .val button {
+                padding: 12px 24px;
+                font-size: 1.2rem;
+                min-width: 100px;
+            }
+            
+            #noBtn.disabled::after {
+                font-size: 0.9rem;
+                top: -25px;
+                padding: 4px 12px;
+            }
+            
+            .gif-container img {
+                max-width: 95vw;
+                max-height: 60vh;
+            }
+            
+            .gif-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .val button {
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            #noBtn.disabled::after {
+                font-size: 0.8rem;
+                top: -20px;
+            }
+            
+            .gif-container img {
+                max-height: 50vh;
+            }
+            
+            .gif-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .gif-container img {
+                max-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <!-- Hearts will be generated by JavaScript -->
+    </div>
+    
+    <div class="val">
+        <p id="question">Будешь моей валентинкой?</p>
+        <div class="buttons">
+            <button id="yesBtn">ДА</button>
+            <button id="noBtn">НЕТ</button>
+        </div>
+        <div class="click-count" id="clickCount" style="display: none;"></div>
+    </div>
+    
+    <div class="gif-container" id="gifContainer">
+        <img src="img/milk-and-mocha-cute.gif" alt="Cute Milk and Mocha GIF" onerror="handleGifError()">
+      
+    </div>
+
+    <script>
+        // Генерация сердечек
+        const ui = document.getElementById('ui');
+        const heartsCount = 100;
+        
+        for (let i = 0; i < heartsCount; i++) {
+            const loveDiv = document.createElement('div');
+            loveDiv.className = 'love';
+            loveDiv.style.setProperty('--i', i);
+            
+            const horizontalDiv = document.createElement('div');
+            horizontalDiv.className = 'love_horizontal';
+            
+            const verticalDiv = document.createElement('div');
+            verticalDiv.className = 'love_vertical';
+            
+            const wordDiv = document.createElement('div');
+            wordDiv.className = 'love_word';
+            wordDiv.textContent = i === heartsCount - 1 ? 'I Love You' : 'I Love You';
+            
+            verticalDiv.appendChild(wordDiv);
+            horizontalDiv.appendChild(verticalDiv);
+            loveDiv.appendChild(horizontalDiv);
+            ui.appendChild(loveDiv);
+        }
+        
+        // Обработчики кнопок
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const clickCount = document.getElementById('clickCount');
+        const gifContainer = document.getElementById('gifContainer');
+        const valDiv = document.querySelector('.val');
+        
+        let noBtnClickCount = 0;
+        let isNoBtnDisabled = false;
+        let isYesClicked = false;
+        
+        // Обработчик для кнопки ДА
+        yesBtn.addEventListener('click', function() {
+            if (isYesClicked) return;
+            isYesClicked = true;
+            
+            // Скрываем вопрос и кнопки
+            valDiv.style.opacity = '0';
+            valDiv.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            setTimeout(() => {
+                valDiv.style.display = 'none';
+            }, 300);
+            
+            // Показываем GIF
+            setTimeout(() => {
+                gifContainer.style.display = 'block';
+                
+                // Анимация появления
+                gifContainer.style.opacity = '0';
+                gifContainer.style.transform = 'translate(-50%, -50%) scale(0.5)';
+                
+                setTimeout(() => {
+                    gifContainer.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    gifContainer.style.opacity = '1';
+                    gifContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 50);
+            }, 400);
+            
+            // Создаем конфетти
+            createConfetti();
+            
+            // Увеличиваем сердечки
+            document.querySelectorAll('.love_word').forEach(word => {
+                word.style.fontSize = '1.8rem';
+                word.style.color = '#ff4d94';
+                word.style.textShadow = '0 0 15px #ff4d94';
+            });
+         
+        });
+        
+        // Обработчик ошибки загрузки GIF
+        function handleGifError() {
+            const gifImg = document.querySelector('.gif-container img');
+            gifImg.style.display = 'none';
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.innerHTML = `
+                <div style="color: #ff4d94; font-size: 2rem; margin-bottom: 20px;">🎉 УРРРААА! 🎉</div>
+                <div style="color: #666; font-size: 1.2rem; margin-bottom: 15px;">Гифка не загрузилась, но это не важно!</div>
+                <div style="font-size: 3rem; animation: pulse 1.5s infinite;">❤️💖💕</div>
+            `;
+            errorDiv.style.textAlign = 'center';
+            errorDiv.style.padding = '30px';
+            
+            gifContainer.appendChild(errorDiv);
+        }
+    
+        // Обработчик для кнопки НЕТ
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Если кнопка уже отключена, ничего не делаем
+            if (isNoBtnDisabled) return;
+            
+            noBtnClickCount++;
+            
+            clickCount.style.display = 'block';
+            
+            // Увеличиваем кнопку ДА с каждым кликом
+            yesBtn.style.fontSize = (1.4 + noBtnClickCount * 0.1) + 'rem';
+            yesBtn.style.padding = (14 + noBtnClickCount * 2) + 'px ' + (28 + noBtnClickCount * 4) + 'px';
+            
+            // Меняем текст кнопки НЕТ
+            const noTexts = [
+                'Точно нет?',
+                'Подумай еще раз!',
+                'Может передумаешь?',
+                'Я буду грустить...',
+                'Последний шанс!',
+                'Пожалуйста!'
+            ];
+            
+            const textIndex = Math.min(noBtnClickCount - 1, noTexts.length - 1);
+            noBtn.textContent = noTexts[textIndex] || 'НЕТ';
+            
+            // Меняем цвет кнопки НЕТ (постепенно краснеет)
+            const redAmount = Math.min(100, noBtnClickCount * 15);
+            noBtn.style.background = `linear-gradient(45deg, 
+                rgb(255, ${180 - redAmount}, ${180 - redAmount}), 
+                rgb(230, ${150 - redAmount}, ${150 - redAmount}))`;
+            
+            // После 5 кликов отключаем кнопку
+            if (noBtnClickCount >= 5) {
+                disableNoButton();
+            }
+            
+            // Анимация нажатия
+            noBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                noBtn.style.transform = 'scale(1)';
+            }, 150);
+        });
+        
+        // Функция отключения кнопки НЕТ
+        function disableNoButton() {
+            isNoBtnDisabled = true;
+            noBtn.classList.add('disabled');
+            noBtn.disabled = true;
+            noBtn.style.cursor = 'not-allowed';
+            noBtn.style.opacity = '0.7';
+            noBtn.textContent = 'НЕТ';
+            
+            // Шакающая анимация надписи "АШАЛЕЛ"
+            setTimeout(() => {
+                const label = noBtn.nextElementSibling;
+                if (label && label.classList.contains('disabled-label')) {
+                    label.style.animation = 'shake 0.5s ease-in-out infinite';
+                }
+            }, 100);
+            
+            // Создаем специальный эффект
+            createCrazyEffect();
+        }
+        
+        // Создание сумасшедшего эффекта
+        function createCrazyEffect() {
+            // Мигающий фон
+            let blinkCount = 0;
+            const blinkInterval = setInterval(() => {
+                document.body.style.backgroundColor = blinkCount % 2 === 0 ? '#ffcccc' : 'aliceblue';
+                blinkCount++;
+                
+                if (blinkCount > 10) {
+                    clearInterval(blinkInterval);
+                    document.body.style.backgroundColor = 'aliceblue';
+                }
+            }, 200);
+            
+            // Безумные сердечки
+            document.querySelectorAll('.love_word').forEach((word, index) => {
+                setTimeout(() => {
+                    word.style.color = ['#ff0000', '#ff6600', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'][index % 7];
+                    word.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
+                    word.style.transform = `translateY(-100%) rotateZ(${Math.random() * 360 - 180}deg)`;
+                }, index * 50);
+            });
+            
+            // Гигантская надпись АШАЛЕЛ в центре
+            const crazyText = document.createElement('div');
+            crazyText.innerHTML = 'АШАЛЕЛ!';
+            crazyText.style.position = 'fixed';
+            crazyText.style.top = '50%';
+            crazyText.style.left = '50%';
+            crazyText.style.transform = 'translate(-50%, -50%)';
+            crazyText.style.fontSize = '4rem';
+            crazyText.style.fontWeight = '900';
+            crazyText.style.color = '#ff0000';
+            crazyText.style.textShadow = '0 0 20px #ff0000, 0 0 40px #ff0000';
+            crazyText.style.zIndex = '9999';
+            crazyText.style.opacity = '0';
+            crazyText.style.transition = 'opacity 0.5s';
+            document.body.appendChild(crazyText);
+            
+            setTimeout(() => {
+                crazyText.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => {
+                crazyText.style.opacity = '0';
+                setTimeout(() => {
+                    crazyText.remove();
+                }, 500);
+            }, 2000);
+        }
+        
+        // Создание конфетти
+        function createConfetti() {
+            const colors = ['#ff4d94', '#ffafcc', '#ff6b9d', '#ff85a2', '#ff97b7'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    
+                    const size = Math.random() * 15 + 5;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = -50;
+                    confetti.style.left = startX + 'px';
+                    confetti.style.top = startY + 'px';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Анимация падения
+                    const duration = Math.random() * 3000 + 2000;
+                    const endX = startX + (Math.random() * 200 - 100);
+                    const endY = window.innerHeight + 50;
+                    
+                    confetti.animate([
+                        {
+                            transform: `translate(0, 0) rotate(0deg)`,
+                            opacity: 1
+                        },
+                        {
+                            transform: `translate(${endX - startX}px, ${endY - startY}px) rotate(${Math.random() * 360}deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                    });
+                    
+                    // Удаление после анимации
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, duration);
+                }, i * 30);
+            }
+        }
+        
+        // Обработка сенсорных событий для мобильных устройств
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const clickEvent = new MouseEvent('click');
+            this.dispatchEvent(clickEvent);
+        }, { passive: false });
+        
+        yesBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const clickEvent = new MouseEvent('click');
+            this.dispatchEvent(clickEvent);
+        }, { passive: false });
+    </script>
+</body>
+</html>
