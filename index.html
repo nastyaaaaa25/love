@@ -1,653 +1,451 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i love you</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            touch-action: manipulation;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: aliceblue; 
+            height: 100vh; 
+            overflow: hidden; 
+            font-family: sans-serif; 
+            position: relative; 
         }
         
-        body {
-            background-color: aliceblue;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Dosis', sans-serif;
-            position: relative;
-        }
-        
-        #ui .love {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -225px 0 0 -225px;
-        }
-        
-        #ui .love:last-child .love_word {
-            color: #fff;
-            font-size: 1.8rem;
-            text-shadow: 0 0 10px #ea80b0;
-        }
-        
-        #ui .love_word {
-            color: #ea80b0;
-            font-size: 1.2rem;
-            transform: translateY(-100%) rotateZ(-30deg);
-            font-family: "Dosis", sans-serif;
-            text-shadow: 0 0 10px #fff;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-        
-        #ui .love_horizontal {
-            animation: horizontal 10000ms infinite alternate ease-in-out;
-        }
-        
-        #ui .love_vertical {
-            animation: vertical 20000ms infinite linear;
-        }
-        
-        /* Генерация анимационных задержек */
-        #ui .love:nth-child(n) .love_horizontal {
-            animation-delay: calc(var(--i) * -300ms);
-        }
-        
-        #ui .love:nth-child(n) .love_vertical {
-            animation-delay: calc(var(--i) * -300ms);
-        }
-        
-        @keyframes horizontal {
-            from {
-                transform: translateX(0px);
-            }
-            to {
-                transform: translateX(450px);
-            }
-        }
-        
-        @keyframes vertical {
-            0% {
-                transform: translateY(180px);
-            }
-            10% {
-                transform: translateY(45px);
-            }
-            15% {
-                transform: translateY(4.5px);
-            }
-            18% {
-                transform: translateY(0px);
-            }
-            20% {
-                transform: translateY(4.5px);
-            }
-            22% {
-                transform: translateY(34.61538px);
-            }
-            24% {
-                transform: translateY(64.28571px);
-            }
-            25% {
-                transform: translateY(112.5px);
-            }
-            26% {
-                transform: translateY(64.28571px);
-            }
-            28% {
-                transform: translateY(34.61538px);
-            }
-            30% {
-                transform: translateY(4.5px);
-            }
-            32% {
-                transform: translateY(0px);
-            }
-            35% {
-                transform: translateY(4.5px);
-            }
-            40% {
-                transform: translateY(45px);
-            }
-            50% {
-                transform: translateY(180px);
-            }
-            71% {
-                transform: translateY(428.57143px);
-            }
-            72.5% {
-                transform: translateY(441.17647px);
-            }
-            75% {
-                transform: translateY(450px);
-            }
-            77.5% {
-                transform: translateY(441.17647px);
-            }
-            79% {
-                transform: translateY(428.57143px);
-            }
-            100% {
-                transform: translateY(180px);
-            }
-        }
-        
-        .val {
+        /* Контейнер для сердечек */
+        #ui {
             position: fixed;
-            top: 50%;
-            left: 50%;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Анимация сердечек */
+        .love { position: absolute; top: 50%; left: 50%; margin: -150px 0 0 -150px; }
+        .love_word { 
+            color: #ea80b0; 
+            font-size: 0.9rem; 
+            transform: translateY(-100%) rotateZ(-30deg); 
+            text-shadow: 0 0 5px #fff; 
+            letter-spacing: 1px; 
+            white-space: nowrap; 
+        }
+        .love_horizontal { animation: horizontal 10000ms infinite alternate ease-in-out; }
+        .love_vertical { animation: vertical 20000ms infinite linear; }
+        
+        /* Индивидуальные задержки для каждого сердечка - 100 сердечек */
+        .love1 .love_horizontal, .love1 .love_vertical { animation-delay: -300ms; }
+        .love2 .love_horizontal, .love2 .love_vertical { animation-delay: -600ms; }
+        .love3 .love_horizontal, .love3 .love_vertical { animation-delay: -900ms; }
+        .love4 .love_horizontal, .love4 .love_vertical { animation-delay: -1200ms; }
+        .love5 .love_horizontal, .love5 .love_vertical { animation-delay: -1500ms; }
+        .love6 .love_horizontal, .love6 .love_vertical { animation-delay: -1800ms; }
+        .love7 .love_horizontal, .love7 .love_vertical { animation-delay: -2100ms; }
+        .love8 .love_horizontal, .love8 .love_vertical { animation-delay: -2400ms; }
+        .love9 .love_horizontal, .love9 .love_vertical { animation-delay: -2700ms; }
+        .love10 .love_horizontal, .love10 .love_vertical { animation-delay: -3000ms; }
+        .love11 .love_horizontal, .love11 .love_vertical { animation-delay: -3300ms; }
+        .love12 .love_horizontal, .love12 .love_vertical { animation-delay: -3600ms; }
+        .love13 .love_horizontal, .love13 .love_vertical { animation-delay: -3900ms; }
+        .love14 .love_horizontal, .love14 .love_vertical { animation-delay: -4200ms; }
+        .love15 .love_horizontal, .love15 .love_vertical { animation-delay: -4500ms; }
+        .love16 .love_horizontal, .love16 .love_vertical { animation-delay: -4800ms; }
+        .love17 .love_horizontal, .love17 .love_vertical { animation-delay: -5100ms; }
+        .love18 .love_horizontal, .love18 .love_vertical { animation-delay: -5400ms; }
+        .love19 .love_horizontal, .love19 .love_vertical { animation-delay: -5700ms; }
+        .love20 .love_horizontal, .love20 .love_vertical { animation-delay: -6000ms; }
+        .love21 .love_horizontal, .love21 .love_vertical { animation-delay: -6300ms; }
+        .love22 .love_horizontal, .love22 .love_vertical { animation-delay: -6600ms; }
+        .love23 .love_horizontal, .love23 .love_vertical { animation-delay: -6900ms; }
+        .love24 .love_horizontal, .love24 .love_vertical { animation-delay: -7200ms; }
+        .love25 .love_horizontal, .love25 .love_vertical { animation-delay: -7500ms; }
+        .love26 .love_horizontal, .love26 .love_vertical { animation-delay: -7800ms; }
+        .love27 .love_horizontal, .love27 .love_vertical { animation-delay: -8100ms; }
+        .love28 .love_horizontal, .love28 .love_vertical { animation-delay: -8400ms; }
+        .love29 .love_horizontal, .love29 .love_vertical { animation-delay: -8700ms; }
+        .love30 .love_horizontal, .love30 .love_vertical { animation-delay: -9000ms; }
+        .love31 .love_horizontal, .love31 .love_vertical { animation-delay: -9300ms; }
+        .love32 .love_horizontal, .love32 .love_vertical { animation-delay: -9600ms; }
+        .love33 .love_horizontal, .love33 .love_vertical { animation-delay: -9900ms; }
+        .love34 .love_horizontal, .love34 .love_vertical { animation-delay: -10200ms; }
+        .love35 .love_horizontal, .love35 .love_vertical { animation-delay: -10500ms; }
+        .love36 .love_horizontal, .love36 .love_vertical { animation-delay: -10800ms; }
+        .love37 .love_horizontal, .love37 .love_vertical { animation-delay: -11100ms; }
+        .love38 .love_horizontal, .love38 .love_vertical { animation-delay: -11400ms; }
+        .love39 .love_horizontal, .love39 .love_vertical { animation-delay: -11700ms; }
+        .love40 .love_horizontal, .love40 .love_vertical { animation-delay: -12000ms; }
+        .love41 .love_horizontal, .love41 .love_vertical { animation-delay: -12300ms; }
+        .love42 .love_horizontal, .love42 .love_vertical { animation-delay: -12600ms; }
+        .love43 .love_horizontal, .love43 .love_vertical { animation-delay: -12900ms; }
+        .love44 .love_horizontal, .love44 .love_vertical { animation-delay: -13200ms; }
+        .love45 .love_horizontal, .love45 .love_vertical { animation-delay: -13500ms; }
+        .love46 .love_horizontal, .love46 .love_vertical { animation-delay: -13800ms; }
+        .love47 .love_horizontal, .love47 .love_vertical { animation-delay: -14100ms; }
+        .love48 .love_horizontal, .love48 .love_vertical { animation-delay: -14400ms; }
+        .love49 .love_horizontal, .love49 .love_vertical { animation-delay: -14700ms; }
+        .love50 .love_horizontal, .love50 .love_vertical { animation-delay: -15000ms; }
+        .love51 .love_horizontal, .love51 .love_vertical { animation-delay: -15300ms; }
+        .love52 .love_horizontal, .love52 .love_vertical { animation-delay: -15600ms; }
+        .love53 .love_horizontal, .love53 .love_vertical { animation-delay: -15900ms; }
+        .love54 .love_horizontal, .love54 .love_vertical { animation-delay: -16200ms; }
+        .love55 .love_horizontal, .love55 .love_vertical { animation-delay: -16500ms; }
+        .love56 .love_horizontal, .love56 .love_vertical { animation-delay: -16800ms; }
+        .love57 .love_horizontal, .love57 .love_vertical { animation-delay: -17100ms; }
+        .love58 .love_horizontal, .love58 .love_vertical { animation-delay: -17400ms; }
+        .love59 .love_horizontal, .love59 .love_vertical { animation-delay: -17700ms; }
+        .love60 .love_horizontal, .love60 .love_vertical { animation-delay: -18000ms; }
+        .love61 .love_horizontal, .love61 .love_vertical { animation-delay: -18300ms; }
+        .love62 .love_horizontal, .love62 .love_vertical { animation-delay: -18600ms; }
+        .love63 .love_horizontal, .love63 .love_vertical { animation-delay: -18900ms; }
+        .love64 .love_horizontal, .love64 .love_vertical { animation-delay: -19200ms; }
+        .love65 .love_horizontal, .love65 .love_vertical { animation-delay: -19500ms; }
+        .love66 .love_horizontal, .love66 .love_vertical { animation-delay: -19800ms; }
+        .love67 .love_horizontal, .love67 .love_vertical { animation-delay: -20100ms; }
+        .love68 .love_horizontal, .love68 .love_vertical { animation-delay: -20400ms; }
+        .love69 .love_horizontal, .love69 .love_vertical { animation-delay: -20700ms; }
+        .love70 .love_horizontal, .love70 .love_vertical { animation-delay: -21000ms; }
+        .love71 .love_horizontal, .love71 .love_vertical { animation-delay: -21300ms; }
+        .love72 .love_horizontal, .love72 .love_vertical { animation-delay: -21600ms; }
+        .love73 .love_horizontal, .love73 .love_vertical { animation-delay: -21900ms; }
+        .love74 .love_horizontal, .love74 .love_vertical { animation-delay: -22200ms; }
+        .love75 .love_horizontal, .love75 .love_vertical { animation-delay: -22500ms; }
+        .love76 .love_horizontal, .love76 .love_vertical { animation-delay: -22800ms; }
+        .love77 .love_horizontal, .love77 .love_vertical { animation-delay: -23100ms; }
+        .love78 .love_horizontal, .love78 .love_vertical { animation-delay: -23400ms; }
+        .love79 .love_horizontal, .love79 .love_vertical { animation-delay: -23700ms; }
+        .love80 .love_horizontal, .love80 .love_vertical { animation-delay: -24000ms; }
+        .love81 .love_horizontal, .love81 .love_vertical { animation-delay: -24300ms; }
+        .love82 .love_horizontal, .love82 .love_vertical { animation-delay: -24600ms; }
+        .love83 .love_horizontal, .love83 .love_vertical { animation-delay: -24900ms; }
+        .love84 .love_horizontal, .love84 .love_vertical { animation-delay: -25200ms; }
+        .love85 .love_horizontal, .love85 .love_vertical { animation-delay: -25500ms; }
+        .love86 .love_horizontal, .love86 .love_vertical { animation-delay: -25800ms; }
+        .love87 .love_horizontal, .love87 .love_vertical { animation-delay: -26100ms; }
+        .love88 .love_horizontal, .love88 .love_vertical { animation-delay: -26400ms; }
+        .love89 .love_horizontal, .love89 .love_vertical { animation-delay: -26700ms; }
+        .love90 .love_horizontal, .love90 .love_vertical { animation-delay: -27000ms; }
+        .love91 .love_horizontal, .love91 .love_vertical { animation-delay: -27300ms; }
+        .love92 .love_horizontal, .love92 .love_vertical { animation-delay: -27600ms; }
+        .love93 .love_horizontal, .love93 .love_vertical { animation-delay: -27900ms; }
+        .love94 .love_horizontal, .love94 .love_vertical { animation-delay: -28200ms; }
+        .love95 .love_horizontal, .love95 .love_vertical { animation-delay: -28500ms; }
+        .love96 .love_horizontal, .love96 .love_vertical { animation-delay: -28800ms; }
+        .love97 .love_horizontal, .love97 .love_vertical { animation-delay: -29100ms; }
+        .love98 .love_horizontal, .love98 .love_vertical { animation-delay: -29400ms; }
+        .love99 .love_horizontal, .love99 .love_vertical { animation-delay: -29700ms; }
+        .love100 .love_horizontal, .love100 .love_vertical { animation-delay: -30000ms; }
+        
+        .love:last-child .love_word { color: #fff; font-size: 1.2rem; text-shadow: 0 0 10px #ea80b0; }
+        
+        @keyframes horizontal { 
+            from { transform: translateX(0px); } 
+            to { transform: translateX(300px); } 
+        }
+        @keyframes vertical {
+            0% { transform: translateY(120px); }
+            10% { transform: translateY(30px); }
+            15% { transform: translateY(3px); }
+            18% { transform: translateY(0px); }
+            20% { transform: translateY(3px); }
+            22% { transform: translateY(23px); }
+            24% { transform: translateY(43px); }
+            25% { transform: translateY(75px); }
+            26% { transform: translateY(43px); }
+            28% { transform: translateY(23px); }
+            30% { transform: translateY(3px); }
+            32% { transform: translateY(0px); }
+            35% { transform: translateY(3px); }
+            40% { transform: translateY(30px); }
+            50% { transform: translateY(120px); }
+            71% { transform: translateY(285px); }
+            72.5% { transform: translateY(294px); }
+            75% { transform: translateY(300px); }
+            77.5% { transform: translateY(294px); }
+            79% { transform: translateY(285px); }
+            100% { transform: translateY(120px); }
+        }
+        
+        /* Основной контейнер с вопросом */
+        .val {
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
             transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(234, 128, 176, 0.3);
-            text-align: center;
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 20px 25px; 
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(234, 128, 176, 0.3); 
+            text-align: center; 
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            border: 2px solid #ffafcc;
-            min-width: 280px;
+            min-width: 250px; 
             max-width: 90%;
         }
-        
-        .val p {
-            color: #ff4d94;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        .val p { 
+            color: #ff4d94; 
+            font-size: 1.3rem; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+        }
+        .buttons { 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center; 
+            flex-wrap: wrap; 
         }
         
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+        /* Кнопка ДА с анимацией при нажатии */
+        #yesBtn, #noBtn {
+            padding: 10px 20px; 
+            font-size: 1rem; 
+            border: none; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            min-width: 80px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        
-        .val button {
-            padding: 14px 28px;
-            font-size: 1.4rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            font-family: 'Dosis', sans-serif;
-            letter-spacing: 1px;
-            min-width: 120px;
-        }
-        
         #yesBtn {
             background: linear-gradient(45deg, #ff4d94, #ffafcc);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
-        }
-        
-        #yesBtn:active {
-            transform: scale(0.95);
+            color: white; 
             box-shadow: 0 3px 10px rgba(255, 77, 148, 0.3);
         }
-        
-        #noBtn {
-            background: linear-gradient(45deg, #b8b8b8, #e0e0e0);
-            color: #666;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transition: all 0.2s ease;
+        #yesBtn:active {
+            transform: scale(0.95);
+            box-shadow: 0 1px 5px rgba(255, 77, 148, 0.2);
         }
         
-        #noBtn.disabled {
+        /* Кнопка НЕТ - чисто CSS решение */
+        #noBtn {
+            background: linear-gradient(45deg, #b8b8b8, #e0e0e0);
+            color: #666; 
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        /* Скрытые радио-кнопки для управления состоянием */
+        #disableNo, #showGif {
+            display: none;
+        }
+        
+        /* Состояния кнопки НЕТ через CSS */
+        #disableNo:checked ~ .val #noBtn {
             background: linear-gradient(45deg, #666, #999);
             color: white;
             cursor: not-allowed;
-            opacity: 0.9;
+            opacity: 0.7;
             transform: scale(1) !important;
+            pointer-events: none;
         }
         
-        #noBtn.disabled::after {
+        #disableNo:checked ~ .val #noBtn::after {
             content: "АШАЛЕЛ";
             position: absolute;
-            top: -30px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(45deg, #ff3333, #ff6666);
             color: white;
-            padding: 5px 15px;
-            border-radius: 25px;
-            font-size: 1rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
             animation: shake 0.5s ease-in-out;
         }
         
-        @keyframes shake {
-            0%, 100% { transform: translateX(-50%) rotate(0deg); }
-            25% { transform: translateX(-50%) rotate(-5deg); }
-            75% { transform: translateX(-50%) rotate(5deg); }
-        }
-        
+        /* Контейнер для GIF - скрыт по умолчанию */
         .gif-container {
-            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2000;
             text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        /* Показ GIF при выборе ДА */
+        #showGif:checked ~ .val {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        #showGif:checked ~ .gif-container {
+            opacity: 1;
+            visibility: visible;
         }
         
         .gif-container img {
-            max-width: 90vw;
-            max-height: 70vh;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(255, 77, 148, 0.5);
-            border: 5px solid white;
+            max-width: 85vw;
+            max-height: 60vh;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 77, 148, 0.4);
+            border: 3px solid white;
         }
         
-        .gif-title {
-            color: #ff4d94;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            animation: pulse 1.5s infinite;
+        /* Анимация для надписи АШАЛЕЛ */
+        @keyframes shake {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-5deg); }
+            75% { transform: translateX(-50%) rotate(5deg); }
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .confetti {
-            position: fixed;
-            width: 15px;
-            height: 15px;
-            opacity: 0;
-            z-index: 999;
-            pointer-events: none;
-        }
-        
-        .click-count {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            color: #ff4d94;
-            font-weight: bold;
-            opacity: 0.8;
-        }
-        
-        @media (max-width: 768px) {
-            #ui .love_word {
-                font-size: 1rem;
-            }
-            
-            #ui .love:last-child .love_word {
-                font-size: 1.5rem;
-            }
-            
-            .val {
-                padding: 20px 25px;
-                min-width: 250px;
-            }
-            
-            .val p {
-                font-size: 1.5rem;
-            }
-            
-            .val button {
-                padding: 12px 24px;
-                font-size: 1.2rem;
-                min-width: 100px;
-            }
-            
-            #noBtn.disabled::after {
-                font-size: 0.9rem;
-                top: -25px;
-                padding: 4px 12px;
-            }
-            
-            .gif-container img {
-                max-width: 95vw;
-                max-height: 60vh;
-            }
-            
-            .gif-title {
-                font-size: 2rem;
-            }
-        }
-        
+        /* Для мобильных устройств */
         @media (max-width: 480px) {
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .val button {
-                width: 100%;
-                max-width: 200px;
-            }
-            
-            #noBtn.disabled::after {
-                font-size: 0.8rem;
-                top: -20px;
-            }
-            
-            .gif-container img {
-                max-height: 50vh;
-            }
-            
-            .gif-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-height: 600px) {
-            .gif-container img {
-                max-height: 50vh;
-            }
+            .val { padding: 15px 20px; min-width: 220px; }
+            .val p { font-size: 1.1rem; }
+            #yesBtn, #noBtn { padding: 8px 16px; font-size: 0.9rem; }
+            .buttons { gap: 8px; }
+            .gif-container img { max-height: 50vh; }
         }
     </style>
 </head>
 <body>
+    <!-- Радио кнопки для управления состоянием -->
+    <input type="checkbox" id="showGif">
+    <input type="checkbox" id="disableNo">
+    
+    <!-- Контейнер для сердечек -->
     <div id="ui">
-        <!-- Hearts will be generated by JavaScript -->
+        <!-- 100 сердечек вручную -->
+        <div class="love love1"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love2"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love3"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love4"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love5"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love6"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love7"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love8"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love9"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love10"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love11"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love12"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love13"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love14"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love15"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love16"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love17"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love18"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love19"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love20"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love21"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love22"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love23"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love24"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love25"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love26"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love27"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love28"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love29"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love30"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love31"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love32"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love33"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love34"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love35"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love36"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love37"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love38"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love39"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love40"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love41"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love42"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love43"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love44"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love45"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love46"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love47"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love48"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love49"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love50"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love51"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love52"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love53"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love54"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love55"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love56"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love57"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love58"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love59"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love60"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love61"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love62"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love63"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love64"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love65"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love66"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love67"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love68"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love69"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love70"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love71"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love72"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love73"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love74"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love75"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love76"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love77"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love78"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love79"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love80"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love81"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love82"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love83"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love84"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love85"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love86"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love87"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love88"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love89"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love90"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love91"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love92"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love93"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love94"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love95"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love96"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love97"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love98"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love99"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+        <div class="love love100"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
     </div>
     
+    <!-- Основной контент с вопросом -->
     <div class="val">
         <p id="question">Будешь моей валентинкой?</p>
         <div class="buttons">
-            <button id="yesBtn">ДА</button>
-            <button id="noBtn">НЕТ</button>
+            <!-- Кнопка ДА - при клике показывает GIF -->
+            <label for="showGif" id="yesBtn">ДА</label>
+            
+            <!-- Кнопка НЕТ - при 4 кликах показывает АШАЛЕЛ -->
+            <button type="button" id="noBtn" onclick="
+                let count = parseInt(this.getAttribute('data-count') || '0');
+                count++;
+                this.setAttribute('data-count', count);
+                
+                if(count >= 4) {
+                    document.getElementById('disableNo').checked = true;
+                }
+                
+                const texts = ['Точно нет?', 'Подумай!', 'Передумаешь?', 'Я расстроюсь', 'АШАЛЕЛ!?!?'];
+                this.textContent = texts[Math.min(count-1, texts.length-1)];
+                
+                const yesBtn = document.getElementById('yesBtn');
+                yesBtn.style.fontSize = (1 + count * 0.08) + 'rem';
+            ">НЕТ</button>
         </div>
-        <div class="click-count" id="clickCount" style="display: none;"></div>
+        <div class="click-count" id="clickCount"></div>
     </div>
     
+    <!-- Контейнер для GIF -->
     <div class="gif-container" id="gifContainer">
-        <img src="img/milk-and-mocha-cute.gif" alt="Cute Milk and Mocha GIF" onerror="handleGifError()">
-      
+        <img src="img/milk-and-mocha-cute.gif" alt="Cute GIF">
     </div>
-
-    <script>
-        // Генерация сердечек
-        const ui = document.getElementById('ui');
-        const heartsCount = 100;
-        
-        for (let i = 0; i < heartsCount; i++) {
-            const loveDiv = document.createElement('div');
-            loveDiv.className = 'love';
-            loveDiv.style.setProperty('--i', i);
-            
-            const horizontalDiv = document.createElement('div');
-            horizontalDiv.className = 'love_horizontal';
-            
-            const verticalDiv = document.createElement('div');
-            verticalDiv.className = 'love_vertical';
-            
-            const wordDiv = document.createElement('div');
-            wordDiv.className = 'love_word';
-            wordDiv.textContent = i === heartsCount - 1 ? 'I Love You' : 'I Love You';
-            
-            verticalDiv.appendChild(wordDiv);
-            horizontalDiv.appendChild(verticalDiv);
-            loveDiv.appendChild(horizontalDiv);
-            ui.appendChild(loveDiv);
-        }
-        
-        // Обработчики кнопок
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const question = document.getElementById('question');
-        const clickCount = document.getElementById('clickCount');
-        const gifContainer = document.getElementById('gifContainer');
-        const valDiv = document.querySelector('.val');
-        
-        let noBtnClickCount = 0;
-        let isNoBtnDisabled = false;
-        let isYesClicked = false;
-        
-        // Обработчик для кнопки ДА
-        yesBtn.addEventListener('click', function() {
-            if (isYesClicked) return;
-            isYesClicked = true;
-            
-            // Скрываем вопрос и кнопки
-            valDiv.style.opacity = '0';
-            valDiv.style.transform = 'translate(-50%, -50%) scale(0.8)';
-            setTimeout(() => {
-                valDiv.style.display = 'none';
-            }, 300);
-            
-            // Показываем GIF
-            setTimeout(() => {
-                gifContainer.style.display = 'block';
-                
-                // Анимация появления
-                gifContainer.style.opacity = '0';
-                gifContainer.style.transform = 'translate(-50%, -50%) scale(0.5)';
-                
-                setTimeout(() => {
-                    gifContainer.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                    gifContainer.style.opacity = '1';
-                    gifContainer.style.transform = 'translate(-50%, -50%) scale(1)';
-                }, 50);
-            }, 400);
-            
-            // Создаем конфетти
-            createConfetti();
-            
-            // Увеличиваем сердечки
-            document.querySelectorAll('.love_word').forEach(word => {
-                word.style.fontSize = '1.8rem';
-                word.style.color = '#ff4d94';
-                word.style.textShadow = '0 0 15px #ff4d94';
-            });
-         
-        });
-        
-        // Обработчик ошибки загрузки GIF
-        function handleGifError() {
-            const gifImg = document.querySelector('.gif-container img');
-            gifImg.style.display = 'none';
-            
-            const errorDiv = document.createElement('div');
-            errorDiv.innerHTML = `
-                <div style="color: #ff4d94; font-size: 2rem; margin-bottom: 20px;">🎉 УРРРААА! 🎉</div>
-                <div style="color: #666; font-size: 1.2rem; margin-bottom: 15px;">Гифка не загрузилась, но это не важно!</div>
-                <div style="font-size: 3rem; animation: pulse 1.5s infinite;">❤️💖💕</div>
-            `;
-            errorDiv.style.textAlign = 'center';
-            errorDiv.style.padding = '30px';
-            
-            gifContainer.appendChild(errorDiv);
-        }
-    
-        // Обработчик для кнопки НЕТ
-        noBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Если кнопка уже отключена, ничего не делаем
-            if (isNoBtnDisabled) return;
-            
-            noBtnClickCount++;
-            
-            clickCount.style.display = 'block';
-            
-            // Увеличиваем кнопку ДА с каждым кликом
-            yesBtn.style.fontSize = (1.4 + noBtnClickCount * 0.1) + 'rem';
-            yesBtn.style.padding = (14 + noBtnClickCount * 2) + 'px ' + (28 + noBtnClickCount * 4) + 'px';
-            
-            // Меняем текст кнопки НЕТ
-            const noTexts = [
-                'Точно нет?',
-                'Подумай еще раз!',
-                'Может передумаешь?',
-                'Я буду грустить...',
-                'Последний шанс!',
-                'Пожалуйста!'
-            ];
-            
-            const textIndex = Math.min(noBtnClickCount - 1, noTexts.length - 1);
-            noBtn.textContent = noTexts[textIndex] || 'НЕТ';
-            
-            // Меняем цвет кнопки НЕТ (постепенно краснеет)
-            const redAmount = Math.min(100, noBtnClickCount * 15);
-            noBtn.style.background = `linear-gradient(45deg, 
-                rgb(255, ${180 - redAmount}, ${180 - redAmount}), 
-                rgb(230, ${150 - redAmount}, ${150 - redAmount}))`;
-            
-            // После 5 кликов отключаем кнопку
-            if (noBtnClickCount >= 5) {
-                disableNoButton();
-            }
-            
-            // Анимация нажатия
-            noBtn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                noBtn.style.transform = 'scale(1)';
-            }, 150);
-        });
-        
-        // Функция отключения кнопки НЕТ
-        function disableNoButton() {
-            isNoBtnDisabled = true;
-            noBtn.classList.add('disabled');
-            noBtn.disabled = true;
-            noBtn.style.cursor = 'not-allowed';
-            noBtn.style.opacity = '0.7';
-            noBtn.textContent = 'НЕТ';
-            
-            // Шакающая анимация надписи "АШАЛЕЛ"
-            setTimeout(() => {
-                const label = noBtn.nextElementSibling;
-                if (label && label.classList.contains('disabled-label')) {
-                    label.style.animation = 'shake 0.5s ease-in-out infinite';
-                }
-            }, 100);
-            
-            // Создаем специальный эффект
-            createCrazyEffect();
-        }
-        
-        // Создание сумасшедшего эффекта
-        function createCrazyEffect() {
-            // Мигающий фон
-            let blinkCount = 0;
-            const blinkInterval = setInterval(() => {
-                document.body.style.backgroundColor = blinkCount % 2 === 0 ? '#ffcccc' : 'aliceblue';
-                blinkCount++;
-                
-                if (blinkCount > 10) {
-                    clearInterval(blinkInterval);
-                    document.body.style.backgroundColor = 'aliceblue';
-                }
-            }, 200);
-            
-            // Безумные сердечки
-            document.querySelectorAll('.love_word').forEach((word, index) => {
-                setTimeout(() => {
-                    word.style.color = ['#ff0000', '#ff6600', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'][index % 7];
-                    word.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
-                    word.style.transform = `translateY(-100%) rotateZ(${Math.random() * 360 - 180}deg)`;
-                }, index * 50);
-            });
-            
-            // Гигантская надпись АШАЛЕЛ в центре
-            const crazyText = document.createElement('div');
-            crazyText.innerHTML = 'АШАЛЕЛ!';
-            crazyText.style.position = 'fixed';
-            crazyText.style.top = '50%';
-            crazyText.style.left = '50%';
-            crazyText.style.transform = 'translate(-50%, -50%)';
-            crazyText.style.fontSize = '4rem';
-            crazyText.style.fontWeight = '900';
-            crazyText.style.color = '#ff0000';
-            crazyText.style.textShadow = '0 0 20px #ff0000, 0 0 40px #ff0000';
-            crazyText.style.zIndex = '9999';
-            crazyText.style.opacity = '0';
-            crazyText.style.transition = 'opacity 0.5s';
-            document.body.appendChild(crazyText);
-            
-            setTimeout(() => {
-                crazyText.style.opacity = '1';
-            }, 100);
-            
-            setTimeout(() => {
-                crazyText.style.opacity = '0';
-                setTimeout(() => {
-                    crazyText.remove();
-                }, 500);
-            }, 2000);
-        }
-        
-        // Создание конфетти
-        function createConfetti() {
-            const colors = ['#ff4d94', '#ffafcc', '#ff6b9d', '#ff85a2', '#ff97b7'];
-            
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    
-                    const size = Math.random() * 15 + 5;
-                    confetti.style.width = size + 'px';
-                    confetti.style.height = size + 'px';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    
-                    const startX = Math.random() * window.innerWidth;
-                    const startY = -50;
-                    confetti.style.left = startX + 'px';
-                    confetti.style.top = startY + 'px';
-                    
-                    document.body.appendChild(confetti);
-                    
-                    // Анимация падения
-                    const duration = Math.random() * 3000 + 2000;
-                    const endX = startX + (Math.random() * 200 - 100);
-                    const endY = window.innerHeight + 50;
-                    
-                    confetti.animate([
-                        {
-                            transform: `translate(0, 0) rotate(0deg)`,
-                            opacity: 1
-                        },
-                        {
-                            transform: `translate(${endX - startX}px, ${endY - startY}px) rotate(${Math.random() * 360}deg)`,
-                            opacity: 0
-                        }
-                    ], {
-                        duration: duration,
-                        easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-                    });
-                    
-                    // Удаление после анимации
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, duration);
-                }, i * 30);
-            }
-        }
-        
-        // Обработка сенсорных событий для мобильных устройств
-        noBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            const clickEvent = new MouseEvent('click');
-            this.dispatchEvent(clickEvent);
-        }, { passive: false });
-        
-        yesBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            const clickEvent = new MouseEvent('click');
-            this.dispatchEvent(clickEvent);
-        }, { passive: false });
-    </script>
 </body>
 </html>
