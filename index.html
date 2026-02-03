@@ -14,15 +14,7 @@
             position: relative; 
         }
         
-        /* Контейнер для сердечек */
-        #ui {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        
-        /* Анимация сердечек */
+        /* Анимация сердечек - ограниченное количество вручную */
         .love { position: absolute; top: 50%; left: 50%; margin: -150px 0 0 -150px; }
         .love_word { 
             color: #ea80b0; 
@@ -35,7 +27,7 @@
         .love_horizontal { animation: horizontal 10000ms infinite alternate ease-in-out; }
         .love_vertical { animation: vertical 20000ms infinite linear; }
         
-        /* Индивидуальные задержки для каждого сердечка - 100 сердечек */
+        /* Индивидуальные задержки для каждого сердечка */
         .love1 .love_horizontal, .love1 .love_vertical { animation-delay: -300ms; }
         .love2 .love_horizontal, .love2 .love_vertical { animation-delay: -600ms; }
         .love3 .love_horizontal, .love3 .love_vertical { animation-delay: -900ms; }
@@ -46,97 +38,6 @@
         .love8 .love_horizontal, .love8 .love_vertical { animation-delay: -2400ms; }
         .love9 .love_horizontal, .love9 .love_vertical { animation-delay: -2700ms; }
         .love10 .love_horizontal, .love10 .love_vertical { animation-delay: -3000ms; }
-        .love11 .love_horizontal, .love11 .love_vertical { animation-delay: -3300ms; }
-        .love12 .love_horizontal, .love12 .love_vertical { animation-delay: -3600ms; }
-        .love13 .love_horizontal, .love13 .love_vertical { animation-delay: -3900ms; }
-        .love14 .love_horizontal, .love14 .love_vertical { animation-delay: -4200ms; }
-        .love15 .love_horizontal, .love15 .love_vertical { animation-delay: -4500ms; }
-        .love16 .love_horizontal, .love16 .love_vertical { animation-delay: -4800ms; }
-        .love17 .love_horizontal, .love17 .love_vertical { animation-delay: -5100ms; }
-        .love18 .love_horizontal, .love18 .love_vertical { animation-delay: -5400ms; }
-        .love19 .love_horizontal, .love19 .love_vertical { animation-delay: -5700ms; }
-        .love20 .love_horizontal, .love20 .love_vertical { animation-delay: -6000ms; }
-        .love21 .love_horizontal, .love21 .love_vertical { animation-delay: -6300ms; }
-        .love22 .love_horizontal, .love22 .love_vertical { animation-delay: -6600ms; }
-        .love23 .love_horizontal, .love23 .love_vertical { animation-delay: -6900ms; }
-        .love24 .love_horizontal, .love24 .love_vertical { animation-delay: -7200ms; }
-        .love25 .love_horizontal, .love25 .love_vertical { animation-delay: -7500ms; }
-        .love26 .love_horizontal, .love26 .love_vertical { animation-delay: -7800ms; }
-        .love27 .love_horizontal, .love27 .love_vertical { animation-delay: -8100ms; }
-        .love28 .love_horizontal, .love28 .love_vertical { animation-delay: -8400ms; }
-        .love29 .love_horizontal, .love29 .love_vertical { animation-delay: -8700ms; }
-        .love30 .love_horizontal, .love30 .love_vertical { animation-delay: -9000ms; }
-        .love31 .love_horizontal, .love31 .love_vertical { animation-delay: -9300ms; }
-        .love32 .love_horizontal, .love32 .love_vertical { animation-delay: -9600ms; }
-        .love33 .love_horizontal, .love33 .love_vertical { animation-delay: -9900ms; }
-        .love34 .love_horizontal, .love34 .love_vertical { animation-delay: -10200ms; }
-        .love35 .love_horizontal, .love35 .love_vertical { animation-delay: -10500ms; }
-        .love36 .love_horizontal, .love36 .love_vertical { animation-delay: -10800ms; }
-        .love37 .love_horizontal, .love37 .love_vertical { animation-delay: -11100ms; }
-        .love38 .love_horizontal, .love38 .love_vertical { animation-delay: -11400ms; }
-        .love39 .love_horizontal, .love39 .love_vertical { animation-delay: -11700ms; }
-        .love40 .love_horizontal, .love40 .love_vertical { animation-delay: -12000ms; }
-        .love41 .love_horizontal, .love41 .love_vertical { animation-delay: -12300ms; }
-        .love42 .love_horizontal, .love42 .love_vertical { animation-delay: -12600ms; }
-        .love43 .love_horizontal, .love43 .love_vertical { animation-delay: -12900ms; }
-        .love44 .love_horizontal, .love44 .love_vertical { animation-delay: -13200ms; }
-        .love45 .love_horizontal, .love45 .love_vertical { animation-delay: -13500ms; }
-        .love46 .love_horizontal, .love46 .love_vertical { animation-delay: -13800ms; }
-        .love47 .love_horizontal, .love47 .love_vertical { animation-delay: -14100ms; }
-        .love48 .love_horizontal, .love48 .love_vertical { animation-delay: -14400ms; }
-        .love49 .love_horizontal, .love49 .love_vertical { animation-delay: -14700ms; }
-        .love50 .love_horizontal, .love50 .love_vertical { animation-delay: -15000ms; }
-        .love51 .love_horizontal, .love51 .love_vertical { animation-delay: -15300ms; }
-        .love52 .love_horizontal, .love52 .love_vertical { animation-delay: -15600ms; }
-        .love53 .love_horizontal, .love53 .love_vertical { animation-delay: -15900ms; }
-        .love54 .love_horizontal, .love54 .love_vertical { animation-delay: -16200ms; }
-        .love55 .love_horizontal, .love55 .love_vertical { animation-delay: -16500ms; }
-        .love56 .love_horizontal, .love56 .love_vertical { animation-delay: -16800ms; }
-        .love57 .love_horizontal, .love57 .love_vertical { animation-delay: -17100ms; }
-        .love58 .love_horizontal, .love58 .love_vertical { animation-delay: -17400ms; }
-        .love59 .love_horizontal, .love59 .love_vertical { animation-delay: -17700ms; }
-        .love60 .love_horizontal, .love60 .love_vertical { animation-delay: -18000ms; }
-        .love61 .love_horizontal, .love61 .love_vertical { animation-delay: -18300ms; }
-        .love62 .love_horizontal, .love62 .love_vertical { animation-delay: -18600ms; }
-        .love63 .love_horizontal, .love63 .love_vertical { animation-delay: -18900ms; }
-        .love64 .love_horizontal, .love64 .love_vertical { animation-delay: -19200ms; }
-        .love65 .love_horizontal, .love65 .love_vertical { animation-delay: -19500ms; }
-        .love66 .love_horizontal, .love66 .love_vertical { animation-delay: -19800ms; }
-        .love67 .love_horizontal, .love67 .love_vertical { animation-delay: -20100ms; }
-        .love68 .love_horizontal, .love68 .love_vertical { animation-delay: -20400ms; }
-        .love69 .love_horizontal, .love69 .love_vertical { animation-delay: -20700ms; }
-        .love70 .love_horizontal, .love70 .love_vertical { animation-delay: -21000ms; }
-        .love71 .love_horizontal, .love71 .love_vertical { animation-delay: -21300ms; }
-        .love72 .love_horizontal, .love72 .love_vertical { animation-delay: -21600ms; }
-        .love73 .love_horizontal, .love73 .love_vertical { animation-delay: -21900ms; }
-        .love74 .love_horizontal, .love74 .love_vertical { animation-delay: -22200ms; }
-        .love75 .love_horizontal, .love75 .love_vertical { animation-delay: -22500ms; }
-        .love76 .love_horizontal, .love76 .love_vertical { animation-delay: -22800ms; }
-        .love77 .love_horizontal, .love77 .love_vertical { animation-delay: -23100ms; }
-        .love78 .love_horizontal, .love78 .love_vertical { animation-delay: -23400ms; }
-        .love79 .love_horizontal, .love79 .love_vertical { animation-delay: -23700ms; }
-        .love80 .love_horizontal, .love80 .love_vertical { animation-delay: -24000ms; }
-        .love81 .love_horizontal, .love81 .love_vertical { animation-delay: -24300ms; }
-        .love82 .love_horizontal, .love82 .love_vertical { animation-delay: -24600ms; }
-        .love83 .love_horizontal, .love83 .love_vertical { animation-delay: -24900ms; }
-        .love84 .love_horizontal, .love84 .love_vertical { animation-delay: -25200ms; }
-        .love85 .love_horizontal, .love85 .love_vertical { animation-delay: -25500ms; }
-        .love86 .love_horizontal, .love86 .love_vertical { animation-delay: -25800ms; }
-        .love87 .love_horizontal, .love87 .love_vertical { animation-delay: -26100ms; }
-        .love88 .love_horizontal, .love88 .love_vertical { animation-delay: -26400ms; }
-        .love89 .love_horizontal, .love89 .love_vertical { animation-delay: -26700ms; }
-        .love90 .love_horizontal, .love90 .love_vertical { animation-delay: -27000ms; }
-        .love91 .love_horizontal, .love91 .love_vertical { animation-delay: -27300ms; }
-        .love92 .love_horizontal, .love92 .love_vertical { animation-delay: -27600ms; }
-        .love93 .love_horizontal, .love93 .love_vertical { animation-delay: -27900ms; }
-        .love94 .love_horizontal, .love94 .love_vertical { animation-delay: -28200ms; }
-        .love95 .love_horizontal, .love95 .love_vertical { animation-delay: -28500ms; }
-        .love96 .love_horizontal, .love96 .love_vertical { animation-delay: -28800ms; }
-        .love97 .love_horizontal, .love97 .love_vertical { animation-delay: -29100ms; }
-        .love98 .love_horizontal, .love98 .love_vertical { animation-delay: -29400ms; }
-        .love99 .love_horizontal, .love99 .love_vertical { animation-delay: -29700ms; }
-        .love100 .love_horizontal, .love100 .love_vertical { animation-delay: -30000ms; }
-        
         .love:last-child .love_word { color: #fff; font-size: 1.2rem; text-shadow: 0 0 10px #ea80b0; }
         
         @keyframes horizontal { 
@@ -296,6 +197,22 @@
             75% { transform: translateX(-50%) rotate(5deg); }
         }
         
+        /* Счетчик нажатий на НЕТ - скрыт */
+        .click-count {
+            display: none;
+        }
+        
+        /* Стилизация ссылок как кнопок */
+        label[for="showGif"], label[for="disableNo"] {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            text-align: center;
+            min-width: 80px;
+        }
+        
         /* Для мобильных устройств */
         @media (max-width: 480px) {
             .val { padding: 15px 20px; min-width: 220px; }
@@ -311,109 +228,76 @@
     <input type="checkbox" id="showGif">
     <input type="checkbox" id="disableNo">
     
-    <!-- Контейнер для сердечек -->
-    <div id="ui">
-        <!-- 100 сердечек вручную -->
-        <div class="love love1"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love2"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love3"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love4"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love5"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love6"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love7"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love8"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love9"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love10"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love11"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love12"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love13"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love14"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love15"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love16"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love17"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love18"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love19"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love20"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love21"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love22"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love23"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love24"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love25"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love26"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love27"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love28"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love29"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love30"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love31"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love32"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love33"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love34"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love35"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love36"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love37"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love38"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love39"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love40"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love41"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love42"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love43"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love44"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love45"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love46"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love47"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love48"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love49"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love50"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love51"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love52"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love53"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love54"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love55"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love56"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love57"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love58"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love59"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love60"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love61"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love62"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love63"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love64"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love65"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love66"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love67"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love68"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love69"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love70"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love71"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love72"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love73"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love74"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love75"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love76"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love77"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love78"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love79"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love80"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love81"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love82"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love83"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love84"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love85"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love86"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love87"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love88"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love89"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love90"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love91"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love92"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love93"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love94"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love95"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love96"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love97"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love98"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love99"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
-        <div class="love love100"><div class="love_horizontal"><div class="love_vertical"><div class="love_word">I Love You</div></div></div></div>
+    <!-- Анимация сердечек -->
+    <div class="love love1">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love2">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love3">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love4">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love5">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love6">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love7">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love8">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love9">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
+    </div>
+    <div class="love love10">
+        <div class="love_horizontal">
+            <div class="love_vertical">
+                <div class="love_word">I Love You</div>
+            </div>
+        </div>
     </div>
     
     <!-- Основной контент с вопросом -->
@@ -433,7 +317,7 @@
                     document.getElementById('disableNo').checked = true;
                 }
                 
-                const texts = ['Точно нет?', 'Подумай!', 'Передумаешь?', 'Я расстроюсь', 'АШАЛЕЛ!?!?'];
+                const texts = ['Точно нет?', 'Подумай!', 'Передумаешь?', 'Я расстроюсь', 'АШАЛЕЛ!'];
                 this.textContent = texts[Math.min(count-1, texts.length-1)];
                 
                 const yesBtn = document.getElementById('yesBtn');
