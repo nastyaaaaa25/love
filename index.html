@@ -5,45 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>i love you</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: aliceblue; 
-            height: 100vh; 
-            overflow: hidden; 
-            font-family: sans-serif; 
-            position: relative; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
+        body { background-color: aliceblue; height: 100vh; overflow: hidden; font-family: sans-serif; position: relative; }
         
-        /* Анимация сердечек - ограниченное количество вручную */
-        .love { position: absolute; top: 50%; left: 50%; margin: -150px 0 0 -150px; }
-        .love_word { 
-            color: #ea80b0; 
-            font-size: 0.9rem; 
-            transform: translateY(-100%) rotateZ(-30deg); 
-            text-shadow: 0 0 5px #fff; 
-            letter-spacing: 1px; 
-            white-space: nowrap; 
-        }
-        .love_horizontal { animation: horizontal 10000ms infinite alternate ease-in-out; }
-        .love_vertical { animation: vertical 20000ms infinite linear; }
+        #ui .love { position: absolute; top: 50%; left: 50%; margin: -150px 0 0 -150px; }
+        #ui .love:last-child .love_word { color: #fff; font-size: 1.2rem; text-shadow: 0 0 5px #ea80b0; }
+        #ui .love_word { color: #ea80b0; font-size: 0.8rem; transform: translateY(-100%) rotateZ(-30deg); text-shadow: 0 0 5px #fff; letter-spacing: 1px; white-space: nowrap; }
+        #ui .love_horizontal { animation: horizontal 8000ms infinite alternate ease-in-out; }
+        #ui .love_vertical { animation: vertical 15000ms infinite linear; }
+        #ui .love:nth-child(n) .love_horizontal { animation-delay: calc(var(--i) * -200ms); }
+        #ui .love:nth-child(n) .love_vertical { animation-delay: calc(var(--i) * -200ms); }
         
-        /* Индивидуальные задержки для каждого сердечка */
-        .love1 .love_horizontal, .love1 .love_vertical { animation-delay: -300ms; }
-        .love2 .love_horizontal, .love2 .love_vertical { animation-delay: -600ms; }
-        .love3 .love_horizontal, .love3 .love_vertical { animation-delay: -900ms; }
-        .love4 .love_horizontal, .love4 .love_vertical { animation-delay: -1200ms; }
-        .love5 .love_horizontal, .love5 .love_vertical { animation-delay: -1500ms; }
-        .love6 .love_horizontal, .love6 .love_vertical { animation-delay: -1800ms; }
-        .love7 .love_horizontal, .love7 .love_vertical { animation-delay: -2100ms; }
-        .love8 .love_horizontal, .love8 .love_vertical { animation-delay: -2400ms; }
-        .love9 .love_horizontal, .love9 .love_vertical { animation-delay: -2700ms; }
-        .love10 .love_horizontal, .love10 .love_vertical { animation-delay: -3000ms; }
-        .love:last-child .love_word { color: #fff; font-size: 1.2rem; text-shadow: 0 0 10px #ea80b0; }
-        
-        @keyframes horizontal { 
-            from { transform: translateX(0px); } 
-            to { transform: translateX(300px); } 
-        }
+        @keyframes horizontal { from { transform: translateX(0px); } to { transform: translateX(300px); } }
         @keyframes vertical {
             0% { transform: translateY(120px); }
             10% { transform: translateY(30px); }
@@ -68,268 +41,192 @@
             100% { transform: translateY(120px); }
         }
         
-        /* Основной контейнер с вопросом */
         .val {
-            position: fixed; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 20px 25px; 
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(234, 128, 176, 0.3); 
-            text-align: center; 
-            z-index: 1000;
-            min-width: 250px; 
-            max-width: 90%;
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95); padding: 15px 20px; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(234, 128, 176, 0.3); text-align: center; z-index: 1000;
+            backdrop-filter: blur(5px); border: 1px solid #ffafcc; min-width: 200px; max-width: 85%;
         }
-        .val p { 
-            color: #ff4d94; 
-            font-size: 1.3rem; 
-            margin-bottom: 15px; 
-            font-weight: 700; 
-        }
-        .buttons { 
-            display: flex; 
-            gap: 10px; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-        }
-        
-        /* Кнопка ДА с анимацией при нажатии */
-        #yesBtn, #noBtn {
-            padding: 10px 20px; 
-            font-size: 1rem; 
-            border: none; 
-            border-radius: 25px; 
-            cursor: pointer; 
-            font-weight: 700; 
-            min-width: 80px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        #yesBtn {
-            background: linear-gradient(45deg, #ff4d94, #ffafcc);
-            color: white; 
-            box-shadow: 0 3px 10px rgba(255, 77, 148, 0.3);
-        }
-        #yesBtn:active {
-            transform: scale(0.95);
-            box-shadow: 0 1px 5px rgba(255, 77, 148, 0.2);
-        }
-        
-        /* Кнопка НЕТ - чисто CSS решение */
-        #noBtn {
-            background: linear-gradient(45deg, #b8b8b8, #e0e0e0);
-            color: #666; 
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        
-        /* Скрытые радио-кнопки для управления состоянием */
-        #disableNo, #showGif {
-            display: none;
-        }
-        
-        /* Состояния кнопки НЕТ через CSS */
-        #disableNo:checked ~ .val #noBtn {
-            background: linear-gradient(45deg, #666, #999);
-            color: white;
-            cursor: not-allowed;
-            opacity: 0.7;
-            transform: scale(1) !important;
-            pointer-events: none;
-        }
-        
-        #disableNo:checked ~ .val #noBtn::after {
-            content: "АШАЛЕЛ";
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff3333, #ff6666);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+        .val p { color: #ff4d94; font-size: 1.2rem; margin-bottom: 15px; font-weight: 700; }
+        .buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .val button { padding: 10px 20px; font-size: 1rem; border: none; border-radius: 25px; cursor: pointer;
+            font-weight: 700; transition: all 0.2s; min-width: 80px; }
+        #yesBtn { background: linear-gradient(45deg, #ff4d94, #ffafcc); color: white; box-shadow: 0 3px 10px rgba(255, 77, 148, 0.3); }
+        #yesBtn:active { transform: scale(0.95); }
+        #noBtn { background: linear-gradient(45deg, #b8b8b8, #e0e0e0); color: #666; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        #noBtn.disabled { background: linear-gradient(45deg, #666, #999); color: white; cursor: not-allowed; opacity: 0.7; }
+        #noBtn.disabled::after {
+            content: "АШАЛЕЛ"; position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff3333, #ff6666); color: white; padding: 3px 10px;
+            border-radius: 15px; font-size: 0.8rem; font-weight: bold; box-shadow: 0 2px 5px rgba(255,0,0,0.3);
             animation: shake 0.5s ease-in-out;
         }
+        @keyframes shake { 0%,100% { transform: translateX(-50%) rotate(0deg); } 25% { transform: translateX(-50%) rotate(-5deg); } 75% { transform: translateX(-50%) rotate(5deg); } }
         
-        /* Контейнер для GIF - скрыт по умолчанию */
         .gif-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2000;
-            text-align: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 2000; text-align: center;
         }
+        .gif-container img { max-width: 85vw; max-height: 60vh; border-radius: 15px; box-shadow: 0 10px 30px rgba(255,77,148,0.4); border: 3px solid white; }
         
-        /* Показ GIF при выборе ДА */
-        #showGif:checked ~ .val {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
+        .confetti { position: fixed; width: 10px; height: 10px; opacity: 0; z-index: 999; pointer-events: none; }
         
-        #showGif:checked ~ .gif-container {
-            opacity: 1;
-            visibility: visible;
-        }
+        .click-count { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; color: #ff4d94; font-weight: bold; }
         
-        .gif-container img {
-            max-width: 85vw;
-            max-height: 60vh;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(255, 77, 148, 0.4);
-            border: 3px solid white;
-        }
-        
-        /* Анимация для надписи АШАЛЕЛ */
-        @keyframes shake {
-            0%, 100% { transform: translateX(-50%) rotate(0deg); }
-            25% { transform: translateX(-50%) rotate(-5deg); }
-            75% { transform: translateX(-50%) rotate(5deg); }
-        }
-        
-        /* Счетчик нажатий на НЕТ - скрыт */
-        .click-count {
-            display: none;
-        }
-        
-        /* Стилизация ссылок как кнопок */
-        label[for="showGif"], label[for="disableNo"] {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 700;
-            text-align: center;
-            min-width: 80px;
-        }
-        
-        /* Для мобильных устройств */
         @media (max-width: 480px) {
-            .val { padding: 15px 20px; min-width: 220px; }
-            .val p { font-size: 1.1rem; }
-            #yesBtn, #noBtn { padding: 8px 16px; font-size: 0.9rem; }
+            .val { padding: 12px 16px; min-width: 180px; }
+            .val p { font-size: 1rem; margin-bottom: 12px; }
+            .val button { padding: 8px 16px; font-size: 0.9rem; min-width: 70px; }
             .buttons { gap: 8px; }
             .gif-container img { max-height: 50vh; }
         }
     </style>
 </head>
 <body>
-    <!-- Радио кнопки для управления состоянием -->
-    <input type="checkbox" id="showGif">
-    <input type="checkbox" id="disableNo">
-    
-    <!-- Анимация сердечек -->
-    <div class="love love1">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love2">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love3">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love4">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love5">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love6">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love7">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love8">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love9">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    <div class="love love10">
-        <div class="love_horizontal">
-            <div class="love_vertical">
-                <div class="love_word">I Love You</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Основной контент с вопросом -->
+    <div id="ui"></div>
     <div class="val">
         <p id="question">Будешь моей валентинкой?</p>
         <div class="buttons">
-            <!-- Кнопка ДА - при клике показывает GIF -->
-            <label for="showGif" id="yesBtn">ДА</label>
-            
-            <!-- Кнопка НЕТ - при 4 кликах показывает АШАЛЕЛ -->
-            <button type="button" id="noBtn" onclick="
-                let count = parseInt(this.getAttribute('data-count') || '0');
-                count++;
-                this.setAttribute('data-count', count);
-                
-                if(count >= 4) {
-                    document.getElementById('disableNo').checked = true;
-                }
-                
-                const texts = ['Точно нет?', 'Подумай!', 'Передумаешь?', 'Я расстроюсь', 'АШАЛЕЛ!'];
-                this.textContent = texts[Math.min(count-1, texts.length-1)];
-                
-                const yesBtn = document.getElementById('yesBtn');
-                yesBtn.style.fontSize = (1 + count * 0.08) + 'rem';
-            ">НЕТ</button>
+            <button id="yesBtn">ДА</button>
+            <button id="noBtn">НЕТ</button>
         </div>
-        <div class="click-count" id="clickCount"></div>
+        <div class="click-count" id="clickCount" style="display: none;"></div>
     </div>
-    
-    <!-- Контейнер для GIF -->
     <div class="gif-container" id="gifContainer">
-        <img src="img/milk-and-mocha-cute.gif" alt="Cute GIF">
+        <img src="img/milk-and-mocha-cute.gif" alt="Cute GIF" onerror="handleGifError()">
     </div>
+
+    <script>
+        // Генерация сердечек (меньше сердечек)
+        const ui = document.getElementById('ui');
+        for (let i = 0; i < 60; i++) {
+            const loveDiv = document.createElement('div');
+            loveDiv.className = 'love';
+            loveDiv.style.setProperty('--i', i);
+            loveDiv.innerHTML = `
+                <div class="love_horizontal">
+                    <div class="love_vertical">
+                        <div class="love_word">${i === 59 ? 'I Love You' : 'I Love You'}</div>
+                    </div>
+                </div>`;
+            ui.appendChild(loveDiv);
+        }
+        
+        // Обработчики кнопок
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const clickCount = document.getElementById('clickCount');
+        const gifContainer = document.getElementById('gifContainer');
+        const valDiv = document.querySelector('.val');
+        
+        let noBtnClickCount = 0;
+        let isNoBtnDisabled = false;
+        let isYesClicked = false;
+        
+        // Кнопка ДА
+        yesBtn.addEventListener('click', function() {
+            if (isYesClicked) return;
+            isYesClicked = true;
+            
+            valDiv.style.opacity = '0';
+            valDiv.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            setTimeout(() => valDiv.style.display = 'none', 200);
+            
+            setTimeout(() => {
+                gifContainer.style.display = 'block';
+                gifContainer.style.opacity = '0';
+                gifContainer.style.transform = 'translate(-50%, -50%) scale(0.5)';
+                setTimeout(() => {
+                    gifContainer.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    gifContainer.style.opacity = '1';
+                    gifContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 50);
+            }, 300);
+            
+            createConfetti();
+            document.querySelectorAll('.love_word').forEach(word => {
+                word.style.color = '#ff4d94';
+                word.style.textShadow = '0 0 10px #ff4d94';
+            });
+        });
+        
+        function handleGifError() {
+            const gifImg = document.querySelector('.gif-container img');
+            gifImg.style.display = 'none';
+            gifContainer.innerHTML = `
+                <div style="color:#ff4d94;font-size:1.5rem;padding:20px;text-align:center">
+                    <div style="margin-bottom:10px">🎉 УРРРААА! 🎉</div>
+                    <div style="font-size:2rem;animation:pulse 1.5s infinite">❤️</div>
+                </div>`;
+        }
+        
+        // Кнопка НЕТ
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (isNoBtnDisabled) return;
+            
+            noBtnClickCount++;
+            clickCount.textContent = `Попыток: ${noBtnClickCount}`;
+            clickCount.style.display = 'block';
+            
+            // Увеличиваем кнопку ДА
+            yesBtn.style.fontSize = (1 + noBtnClickCount * 0.08) + 'rem';
+            
+            // Меняем текст кнопки НЕТ
+            const noTexts = ['Точно нет?', 'Подумай!', 'Передумаешь?', 'Я расстроюсь', 'Последний шанс!'];
+            noBtn.textContent = noTexts[Math.min(noBtnClickCount-1, noTexts.length-1)] || 'НЕТ';
+            
+            // Меняем цвет
+            const redAmount = Math.min(100, noBtnClickCount * 15);
+            noBtn.style.background = `linear-gradient(45deg, rgb(255, ${180-redAmount}, ${180-redAmount}), rgb(230, ${150-redAmount}, ${150-redAmount}))`;
+            
+            if (noBtnClickCount >= 4) disableNoButton();
+            
+            noBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => noBtn.style.transform = 'scale(1)', 150);
+        });
+        
+        function disableNoButton() {
+            isNoBtnDisabled = true;
+            noBtn.classList.add('disabled');
+            noBtn.disabled = true;
+            noBtn.textContent = 'НЕТ';
+            
+            // Эффект АШАЛЕЛ
+            document.body.style.backgroundColor = '#ffcccc';
+            setTimeout(() => document.body.style.backgroundColor = 'aliceblue', 300);
+            
+            const crazyText = document.createElement('div');
+            crazyText.innerHTML = 'АШАЛЕЛ!';
+            crazyText.style.cssText = 'position:fixed;top:20%;left:50%;transform:translate(-50%);font-size:2.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 15px #ff0000;z-index:9999;opacity:0;transition:opacity 0.3s;';
+            document.body.appendChild(crazyText);
+            setTimeout(() => crazyText.style.opacity = '1', 10);
+            setTimeout(() => { crazyText.style.opacity = '0'; setTimeout(() => crazyText.remove(), 300); }, 1500);
+        }
+        
+        function createConfetti() {
+            const colors = ['#ff4d94', '#ffafcc', '#ff6b9d'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.cssText = `width:${Math.random()*10+5}px;height:${Math.random()*10+5}px;background-color:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'0'};left:${Math.random()*window.innerWidth}px;top:-20px;`;
+                    document.body.appendChild(confetti);
+                    
+                    const duration = Math.random() * 2000 + 1500;
+                    confetti.animate([
+                        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+                        { transform: `translate(${Math.random()*100-50}px,${window.innerHeight+50}px) rotate(${Math.random()*360}deg)`, opacity: 0 }
+                    ], { duration: duration, easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)' });
+                    
+                    setTimeout(() => confetti.remove(), duration);
+                }, i * 20);
+            }
+        }
+        
+        // Сенсорные события
+        noBtn.addEventListener('touchstart', e => { e.preventDefault(); noBtn.click(); }, { passive: false });
+        yesBtn.addEventListener('touchstart', e => { e.preventDefault(); yesBtn.click(); }, { passive: false });
+    </script>
 </body>
 </html>
